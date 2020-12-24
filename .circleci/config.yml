@@ -34,13 +34,12 @@ commands:
     parameters:
       workflowid:
         type: string
-        default: Hey there
     steps:
       - run:
           echo This is the workflow ID - << parameters.workflowid >>
 
 jobs:
-  myjob:
+  test_command:
     docker:
       - image: circleci/node:13.8.0
     
@@ -53,4 +52,4 @@ jobs:
 workflows:
   my_workflow:
     jobs:
-      - myjob
+      - test_command
