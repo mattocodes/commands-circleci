@@ -44,8 +44,8 @@ jobs:
       - image: circleci/node:13.8.0
     
     steps:
-      # - run:
-      #     name: Testing Command Job
+      - run:
+          name: Testing Command Job
       - print_pipeline_id:
           workflowid: $CIRCLE_WORKFLOW_ID
 
