@@ -1,32 +1,27 @@
 version: 2.1
 
 commands:
-  print_pipeline_id: 
-    description: Learning how to use the command key
+  sayhello:
+    description: "A very simple command for demonstration purposes"
     parameters:
-      workflowid:
+      to:
         type: string
-        default: 'hello there'
+        default: "World"
     steps:
       - run: 
-          echo This is the workflow ID - << parameters.workflowid >>
+          echo Hello << parameters.to >>
 
 jobs:
-  test_command: 
-    docker: 
+  myjob:
+    docker:
       - image: circleci/node:13.8.0
+
     steps:
-      - run:
-          name: Testing Command Job
-      - print_pipeline_id:
-          workflowid: 'hey'
+      - sayhello: # invoke command "sayhello"
+          to: 'Lev'
 
 workflows:
   my_workflow:
     jobs:
-      - test_command
+      - myjob
 
-          
-
-
-      
