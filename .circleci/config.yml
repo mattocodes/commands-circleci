@@ -48,7 +48,7 @@ jobs:
       # - run:
       #     name: Testing Command Job
       - print_pipeline_id:
-          workflowid: Helloooooooooo folks
+          workflowid: $CIRCLE_WORKFLOW_ID
 
 workflows:
   my_workflow:
