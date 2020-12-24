@@ -1,0 +1,31 @@
+version: 2.1
+
+commands:
+  print_pipeline_id: 
+    description: Learning how to use the command key
+    parameters:
+      workflowid:
+        type: string
+    steps:
+      - run: 
+          echo This is the workflow ID - << parameters.workflowid >>
+
+jobs:
+  test_command: 
+    docker: 
+      - image: circleci/node:13.8.0
+    steps:
+      - run:
+          name: Testing Command Job
+      - print_pipeline_id:
+          workflowid: $CIRCLE_WORKFLOW_ID
+
+workflows:
+  my_workflow:
+    jobs:
+      - test_command
+
+          
+
+
+      
