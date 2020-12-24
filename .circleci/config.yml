@@ -1,31 +1,3 @@
-# version: 2.1
-
-# commands:
-#   sayhello:
-#     description: "A very simple command for demonstration purposes"
-#     parameters:
-#       to:
-#         type: string
-#     steps:
-#       - run: 
-#           echo Hello << parameters.to >>
-
-# jobs:
-#   myjob:
-#     docker:
-#       - image: circleci/node:13.8.0
-
-#     steps:
-#       - sayhello: # invoke command "sayhello"
-#           to: 'Lev'
-
-# workflows:
-#   my_workflow:
-#     jobs:
-#       - myjob
-
-
-
 version: 2.1
 
 commands:
@@ -45,7 +17,7 @@ jobs:
     
     steps:
       - run:
-          name: Testing Command Job
+          echo Testing Command Job
       - print_pipeline_id:
           workflowid: $CIRCLE_WORKFLOW_ID
 
