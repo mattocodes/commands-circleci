@@ -1,26 +1,56 @@
+# version: 2.1
+
+# commands:
+#   sayhello:
+#     description: "A very simple command for demonstration purposes"
+#     parameters:
+#       to:
+#         type: string
+#     steps:
+#       - run: 
+#           echo Hello << parameters.to >>
+
+# jobs:
+#   myjob:
+#     docker:
+#       - image: circleci/node:13.8.0
+
+#     steps:
+#       - sayhello: # invoke command "sayhello"
+#           to: 'Lev'
+
+# workflows:
+#   my_workflow:
+#     jobs:
+#       - myjob
+
+
+
 version: 2.1
 
 commands:
-  sayhello:
-    description: "A very simple command for demonstration purposes"
+  print_pipeline_id:
+    description: Learning how to use the command key
     parameters:
-      to:
+      workflowid:
         type: string
+        default: Hey there
     steps:
-      - run: 
-          echo Hello << parameters.to >>
+      - run:
+          echo This is the workflow ID - << parameters.workflowid >>
 
 jobs:
-  myjob:
+  test_command:
     docker:
       - image: circleci/node:13.8.0
-
+    
     steps:
-      - sayhello: # invoke command "sayhello"
-          to: 'Lev'
+      - run:
+          name: Testing Command Job
+      - print_pipeline_id:
+          workflowid: Helloooooooooo folks
 
 workflows:
   my_workflow:
     jobs:
-      - myjob
-
+      - test_command
